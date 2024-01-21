@@ -17,7 +17,7 @@ public class TestApplication {
         try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit")) {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             Query query = entityManager.createNativeQuery("SELECT * FROM material");
-            Assertions.assertEquals(queryTypeChecker.getQueryType(query), QueryTypeChecker.QueryType.SQL);
+            Assertions.assertEquals(QueryTypeChecker.QueryType.SQL, queryTypeChecker.getQueryType(query));
         } catch (Exception exception) {
             Assertions.fail(exception);
         }
@@ -28,7 +28,7 @@ public class TestApplication {
         try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit")) {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             Query query = entityManager.createQuery("SELECT o FROM Material o");
-            Assertions.assertEquals(queryTypeChecker.getQueryType(query), QueryTypeChecker.QueryType.JPQL);
+            Assertions.assertEquals(QueryTypeChecker.QueryType.JPQL, queryTypeChecker.getQueryType(query));
         } catch (Exception exception) {
             Assertions.fail(exception);
         }
